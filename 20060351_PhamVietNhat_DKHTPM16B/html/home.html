@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        #er1,
+        #er2,
+        #er3,
+        #er4,
+        #er5 {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+    <script>
+        function ktMSV() {
+            var regt = /^[0-9]{10}$/;
+            var t = document.getElementById("txtMaSV").value;
+            if (regt.test(t)) {
+                //dubng
+                document.getElementById("er1").innerHTML = "*";
+                return true;
+            } else {
+                document.getElementById("er1").innerHTML = "Chỉ 10 chữ số";
+                return false;
+            }
+        }
+
+        function ktSDT() {
+            var regt = /^[0-9]{10}$/;
+            var t = document.getElementById("txtSDT").value;
+            if (regt.test(t)) {
+                //dubng
+                document.getElementById("er5").innerHTML = "*";
+                return true;
+            } else {
+                document.getElementById("er5").innerHTML = "Chỉ 10 chữ số";
+                return false;
+            }
+        }
+
+        function ktNgay() {
+            var ngay = document.getElementById("txtNgay").value;
+            ngay = new Date(ngay);
+            var today = new Date();
+            today.setDate(today.getDate() + 7)
+            if (ngay < today) {
+                document.getElementById("er3").innerHTML = "Ngày phải sau ngày hiện tại 7 ngày";
+            } else {
+                document.getElementById("er3").innerHTML = "";
+                return true;
+            }
+        }
+
+        var count = 1;
+
+        function dangky() {
+            if (ktMSV() && ktNgay() && ktSDT()) {
+                var maSV = document.getElementById("txtMaSV").value;
+                var hoTen = document.getElementById("txtHT").value;
+
+                var n = document.getElementById("frmdk").length;
+
+                var email = document.getElementById("txtEmail").value;
+                var SDT = document.getElementById("txtSDT").value;
+                var ngay = document.getElementById("txtNgay").value;
+                var b = document.getElementById("bang");
+                var h = b.insertRow(count);
+                var c0 = h.insertCell(0);
+                var c1 = h.insertCell(1);
+                var c2 = h.insertCell(2);
+                var c3 = h.insertCell(3);
+                var c4 = h.insertCell(4);
+                var c5 = h.insertCell(5);
+                c0.innerHTML = count;
+                c1.innerHTML = maSV;
+                c2.innerHTML = hoTen;
+                c3.innerHTML = ngay;
+                c4.innerHTML = email;
+                c5.innerHTML = SDT;
+                count++;
+            } else {
+                alert("Bạn chưa nhập đầy đủ hoặc đúng thông tin")
+            }
+        }
+    </script>
+    </script>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="../img/logo.PNG" alt="">
+        </div>
+        <div class="col-md-10">
+            <h3 align="center">ĐOÀN THANH NIÊN THÀNH PHỐ HỒ CHÍ MINH</h3>
+            <h5 align="center" style="color: brown;">ĐOÀN THANH NIÊN TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP THÀNH PHỐ HỒ CHÍ MINH</h5>
+        </div>
+    </div>
+    <div class="row">
+        <nav class="navbar navbar-expand-md col-md-12">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">TRANG CHỦ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">ĐOÀN THỂ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">SỰ KIỆN</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                
+                                HOẠT ĐỘNG<span class="caret"></span>
+                            </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#myModal">ĐĂNG KÝ</a></li>
+                        <li><a href="#">THAM GIA</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <aside>
+                <img src="../img/ngayhoithanhnien.JPG" alt="" class="rounded-circle" width="100%">
+            </aside>
+        </div>
+        <div class="col-md-6">
+            <h3>TIN NỔI BẬT</h3>
+            <div style="background-color: aquamarine; text-decoration: none;">
+                <a href="">I. Mùa hè xanh</a> <br>
+                <a href="">II. Thanh niên tình nguyện</a> <br>
+                <a href="">III. Tấm lòng vàng</a> <br>
+                <a href="">IV. Hiến máu nhân đạo</a> <br>
+                <a href="">V. Bảo vệ môi trường sạch</a> <br>
+                <a href="">VI. Thi đua lập thành tích chào mừng 26/3</a> <br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 align="center">DANH SÁCH ĐĂNG KÝ HOẠT ĐỘNG MÙA HÈ XANH</h3>
+            <table class="table table-hover" id="bang">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã SV</th>
+                    <th>Tên SV</th>
+                    <th>Ngày tham gia</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>1234567890</td>
+                    <td>Phạm Việt Nhật</td>
+                    <td>2022-05-12</td>
+                    <td>1234567890</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <footer class="col-md-12 bg-info text-center" style="background-color: aqua;">
+            <p>@ 2020-2021 Đoàn thanh niên - Trường đại học công nghiệp TP.HCM</p>
+        </footer>
+    </div>
+
+    <div class="modal fade" role="dialog" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    THÔNG TIN ĐĂNG KÝ
+                </div>
+                <div class="modal-body">
+                    <form method="get" class="form-horizontal" id="frmdk">
+                        <div class="form-group">
+                            <label for="txtmaSV">Mã sinh viên: </label>
+                            <input type="text" name="txtMaSV" id="txtMaSV" class="form-control" placeholder="Mã sinh viên" onblur="ktMSV()">
+                            <span id="er1">*</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtHT">Họ tên: </label>
+                            <input type="text" name="txtHT" id="txtHT" class="form-control" placeholder="Họ tên">
+                            <span id="er2">*</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNgay">Ngày tham gia: </label>
+                            <input type="date" name="txtNgay" id="txtNgay" class="form-control" onblur="ktNgay()">
+                            <span id="er3">*</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail">Email: </label>
+                            <input type="email" name="txtEmail" id="txtEmail" class="form-control" placeholder="Email">
+                            <span id="er4">*</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSDT">Số điện thoại: </label>
+                            <input type="text" name="txtSDT" id="txtSDT" class="form-control" placeholder="Số điện thoại" onblur="ktSDT()">
+                            <span id="er5">*</span>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <input type="button" onclick="dangky()" value="Lưu" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <body>
+
+    </body>
+
+</html>
